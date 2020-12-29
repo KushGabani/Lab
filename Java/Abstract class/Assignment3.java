@@ -40,7 +40,7 @@ class Test extends Stack {
         System.out.print("Enter the value to push to the stack : ");
         int val = in.nextInt();
         if(this.top != size)
-            this.stack[top++] = val;
+            this.stack[++top] = val;
         else
             System.out.println("Stack Overflow.");
     }
