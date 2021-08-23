@@ -1,0 +1,35 @@
+import java.awt.*;
+import java.awt.event.*;
+import java.applet.*;
+
+public class ListDemo extends Applet implements ActionListener {
+	List os;
+	String msg = "";
+	public void init() 
+	{
+		os = new List(4, true);
+
+		os.add("Win 98");
+		os.add("Win NT");
+		os.add("Solaris");
+		os.add("MacOS");
+        	os.select(1);
+		add(os);
+		os.addActionListener(this);
+}
+	public void actionPerformed(ActionEvent ae) 
+	{
+		repaint();
+	}
+	public void paint(Graphics g) 
+	{
+        	int a[];
+		msg = "Current OS: ";
+		a = os.getSelectedIndexes();
+		for(int i=0; i<a.length; i++)
+			msg += os.getItem(a[i]) + "    ";
+
+		g.drawString(msg, 6, 120);
+	
+}
+}

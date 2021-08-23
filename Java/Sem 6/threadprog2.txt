@@ -1,0 +1,52 @@
+
+package javaapplication3;
+import java.io.*;
+
+class test implements Runnable
+{
+     Thread t;
+     String s1,s2;
+     test(String s)
+     {
+           t=new Thread(this,s);
+           System.out.println("Thread name is"+t);
+           s1="abcd";
+           s2="hello world";
+           t.start();
+     }
+     public void run()
+     {    
+     try
+     {
+      if(t.getName()=="one")
+       {
+          for(int i=0;i<s1.length()-1;i++)
+          {
+             System.out.println(s1.charAt(i));
+             t.sleep(1000);
+           }
+       }
+      
+      else if(t.getName()=="two")
+      {
+            for(int i=1;i<s2.length()-1;i+=2)
+          {
+             System.out.println(s2.charAt(i));
+             t.sleep(2000);
+           }
+      }
+     }
+      catch(InterruptedException e)
+      {}
+     }     
+}
+
+class JavaApplication3
+{
+    public static void main(String args[])
+    {
+             new test("one");
+             new test("two");
+            
+      }
+}
